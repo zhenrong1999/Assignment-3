@@ -63,7 +63,7 @@ academicStatus :: academicStatus(){
 }
 
 void academicStatus :: academics_set(string studentGpa,string studentCgpa,string studentStatus,string studentAccumulatedcredit,string studentMuetband){
-	//change all variable(GPA,CGPA,Status,Accumulated credit and MUET band) at once.
+	//change or set all variable(GPA,CGPA,Status,Accumulated credit and MUET band) at once.
 	gpa=stod(studentGpa);
 	cgpa=stod(studentCgpa);
 	status=studentStatus;
@@ -82,7 +82,7 @@ academicStatus :: ~academicStatus(){
 	muetBand=1;
 }
 
-void academicStatus :: displayData(){
+void academicStatus :: displayData(){ // display fucntion for this academic status class
 	cout<<"Gpa : "<<gpa<<endl;
 	cout<<"Cgpa : " <<cgpa<<endl;
 	cout<<"Status : "<<status<<endl;
@@ -97,16 +97,16 @@ class courselist
 private:
 string *course,*grade,*cu;//cu is course unit.
 int size_of_list=0;
-public:                                                                 //function calculate GPA.
+public:
 courselist(){
 }
 courselist(string Coursein[],int CUin[],string Gradein[],int size)
 {
 	course = new string [size];
 	grade = new string [size];
-	cu = new string [size];
+	cu = new string [size]; // cu is course unit
 	size_of_list=size;
-	for(int i=0; i<size; i++)
+	for(int i=0; i<size; i++) // setting course , grade and unit into array
 	{
 		course[i]=Coursein[i];
 		grade[i]=Gradein[i];
@@ -161,7 +161,7 @@ float convertTonumber(string gradeOfcourse)//convert Alphabet to numeric //copy 
 		return -1;
 }
 
-double calculateGpa(){ //add start here
+double calculateGpa(){ //calculate gpa of the 6 courses
 
 	int unit=0;
 	double gpa=0;
@@ -220,7 +220,7 @@ courselist Coursetable;
 public:
 profile()
 {
-	name="empty";
+    name="empty";
 	nomatric="0";
 	gender="empty";
 	address="empty";
@@ -318,37 +318,37 @@ string getcourseunit(int index_number)
 template <class type>
 int binarysearch(int begin,int end, type arr[],type search) //binary search is a search method used to search an object from an arry and give the index_number number of the object in the arry.
 {
-	int half;
+	int half;	// store the middle point of the beginning point and end point of the array
 	bool finding=false;
 	do
 	{
-		//cout<<begin<<" "<<end<<endl;
-		half=floor((end-begin)/2);
+
+		half=floor((end-begin)/2) + begin; //calculate the middle point.
 		if(arr[half]==search)
 		{
 			finding=true;
 			return half;
 		}
-		else if(search>arr[half])
+		else  if(search>arr[half])
 		{
-			begin=++half+begin;
+			begin=++half;
 		}
 		else if(search<arr[half])
 		{
-			end=end-half-1;
+			end=--half;
 		}
 
-		if(begin>=end)
+		if(begin>end)
 		{
 			finding=true;
 		}
-	} while(!finding);
+	} while(!finding);	//loop until find the searching item.
 	return -1;
 }
 
 //user defined function
 
-string stringintoupper(string input)
+string stringintoupper(string input)	//convert string lowercase letter to uppercase letter
 {
 	stringstream input_as_stream;
 	input_as_stream.str(input);
@@ -365,76 +365,76 @@ string stringintoupper(string input)
 	return output;
 }
 
-bool validation(profile student[],int index_number)
+bool validation(profile student[],int index_number) //validate whether the respective student is qualified or not qualified
 {
-	if(student[index_number].getCgpa()>=2)
-		if(student[index_number].getAccumulatedcredit()>=60)
-			if(stringintoupper(student[index_number].getStatus())=="ACTIVE")
-				if(student[index_number].getMuetband()>=4)
-					if(student[index_number].callcalculateGpa()>=2)
+	if(student[index_number].getCgpa()>=2) //validate whether student's cgpa >2
+		if(student[index_number].getAccumulatedcredit()>=60)//validate whether student's accumulated credit >60
+			if(stringintoupper(student[index_number].getStatus())=="ACTIVE") //validate whether student's status is active
+				if(student[index_number].getMuetband()>=4) //validate whether student's muet band >=4
+					if(student[index_number].callcalculateGpa()>=2) //validate whether student's gpa >2
 					{
-						int no_of_required_course=0;
+						int no_of_required_course=0;	//store the number of valided required course.
 						for(int i=0; i<student[index_number].getsizeoflist(); i++)
 						{
 
-							if(stringintoupper(student[index_number].getcourse(i))=="CPT111")
+							if(stringintoupper(student[index_number].getcourse(i))=="CPT111") 	//check the student have the course CPT111
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)	//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CPT113")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CPT113")	//check the student have the course CPT113
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CST131")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CST131")	//check the student have the course CST131
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CMT221")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CMT221")	//check the student have the course CMT221
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CMT222")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CMT222")	//check the student have the course CMT222
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CAT200")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CAT200")	//check the student have the course CAT200
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))>=2)//convert to number and check the student pass the course or not
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
-							else if(stringintoupper(student[index_number].getcourse(i))=="CAT300")
+							else if(stringintoupper(student[index_number].getcourse(i))=="CAT300")	//check the student have the course CAT300
 							{
-								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))==-2)
+								if(student[index_number].callconvertTonumber(student[index_number].getgrade(i))==-2)//convert to number and check the student get the course.
 								{no_of_required_course++;}
 								else
 								{return false;}
 							}
 						}
 						if(no_of_required_course==7)
-						{return true;}
+						{return true;} // if all requirement are true, return true
 					}
 
-	return false;
+	return false; // if 1 of the validation false, return false
 }
 
-bool checkfordigit(const string X)
+bool checkfordigit(const string X)	//function to check for the content that contain all digit
 {
 	char str[X.length()];
 	for (unsigned int j =0; j<X.length(); j++) //change the string into array of char because isdigit accept char.
@@ -447,35 +447,36 @@ bool checkfordigit(const string X)
 	return true;
 }
 
-bool emailcheck(const string X)
+bool emailcheck(const string X)	//check for the contain that contain symbol '@'. Because email must have this '@' symbol
 {
 	for (unsigned int i =0; i<X.length(); i++) //check one by one.
 	{
-		if (X[i]=='@') //check for digit
+		if (X[i]=='@') //check for symbol'@'
 			return true;
 	}
 	return false;
 }
 
-void get_array_of_no_matric(string arr[],int studentCount,profile student[])
+void get_array_of_no_matric(string arr[],int studentCount,profile student[]) //get a copy array of no. matric from the student class
 {
-	sort(student, student + studentCount,[](profile a, profile b) -> bool {
+	sort(student, student + studentCount,[](profile a, profile b) -> bool {		//sort the no matric according to the ascending order.
 		return a.getmatric() < b.getmatric();
 	} );
 	for(int i=0; i<studentCount; i++)
 		arr[i]=student[i].getmatric();
 }
 
-void get_array_of_name(string arr[],int studentCount,profile student[])
+/*		//not used in the program.
+void get_array_of_name(string arr[],int studentCount,profile student[]) //get a copy array of name from the student class
 {
 	sort(student, student + studentCount,[](profile a, profile b) -> bool {
 		return a.getname() < b.getname();
 	} );
 	for(int i=0; i<studentCount; i++)
 		arr[i]=student[i].getname();
-}
+} */
 
-void display_student_data(profile student[],int i)
+void display_student_data(profile student[],int i) // display all the information of respective student
 {
 	cout<<left<<setw(3)<<"1. "<<setw(20)<<"Name: "<<student[i].getname()<<endl;
 	cout<<left<<setw(3)<<"2. "<<setw(20)<<"No. matric: "<<student[i].getmatric()<<endl;
@@ -496,7 +497,7 @@ void display_student_data(profile student[],int i)
 	}
 }
 
-void keyIn_by_SY(int &studentCount,profile student[])
+void keyIn_by_SY(int &studentCount,profile student[],int const max_student) // user define function that perform key in method
 {
 	string studentGpa;
 	string studentCgpa;
@@ -525,7 +526,7 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		cout<<"Gender of the student(male/female): "<<endl;
 		cin>>gender;
 
-		if(gender!="male" && gender != "female") {
+		if(gender!="male" && gender != "female" && gender!="MALE" && gender!="FEMALE") { //verify whether key in the correct data or not
 
 			cout<<"Please key in only male or female. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
@@ -538,13 +539,13 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		cout<<"Email of the student: "<<endl;
 		cin>>email;
 
-		if(emailcheck(email)==false) {
+		if(emailcheck(email)==false) { // verify the email by checking whther there is @ inside the variable
 
 			cout<<"Please key in only peoper data. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
 
-		cout<<"Phone number of the student: "<<endl;
+		cout<<"Phone number of the student: "<<endl; // verify isit integer
 		cin>>nophone;
 
 		if(checkfordigit(nophone)==false) {
@@ -553,12 +554,12 @@ void keyIn_by_SY(int &studentCount,profile student[])
 			continue;
 		}
 
-		student[studentCount].change(Name,nomatric,gender,address, email,nophone);
+		student[studentCount].change(Name,nomatric,gender,address, email,nophone);//set these variable using the change() function
 		system("cls");
 		cout<<"Key in student's gpa."<<endl;
 		cin>>studentGpa;
 
-
+//verify gpa is number or not
 		if(studentGpa.find_first_not_of("1234567890.")!=string::npos || stod(studentGpa)>4.0) {
 
 			cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
@@ -568,7 +569,7 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		cout<<"Key in student's cgpa."<<endl;
 		cin>>studentCgpa;
 
-
+//verify cgpa is number or not
 		if(studentCgpa.find_first_not_of("1234567890.")!=string::npos || stod(studentCgpa)>4.0) {
 
 			cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
@@ -597,7 +598,7 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		cout<<"Key in student's accumulated credit."<<endl;
 		cin>>studentAccumulatedcredit;
 
-
+//verify accumulated credit hour is number or not
 		if(studentAccumulatedcredit.find_first_not_of("1234567890.")!=string::npos) {
 
 			cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
@@ -607,17 +608,18 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		cout<<"Key in student's muet band."<<endl;
 		cin>>studentMuetband;
 
-
+//verify muet band is number or not
 		if(studentMuetband.find_first_not_of("1234567890")!=string::npos || stoi(studentMuetband)>6) {
 
 			cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
 			continue;
 		}
 
-		student[studentCount].academics_set(studentGpa,studentCgpa,studentStatus,studentAccumulatedcredit,studentMuetband);
+		student[studentCount].academics_set(studentGpa,studentCgpa,studentStatus,studentAccumulatedcredit,studentMuetband);//set these variable using academics_set function
 		system("cls");
 
 		cout<<"Key in the number of course. (default: 7)"<<endl;
+		cout<<"*Reminder : for course CAT300, the grade section key in TL"<<endl<<endl;
 		do
 		{
 			try
@@ -666,12 +668,12 @@ void keyIn_by_SY(int &studentCount,profile student[])
 				cin>>grade[i];
 			}
 		}
-		student[studentCount].course_change(course,cu,grade,no_of_course);
+		student[studentCount].course_change(course,cu,grade,no_of_course);// set these variables using course_change function
 		cout<<"Do you wish to continue key in another student's data?"<<endl<<endl; //ask the user to key in new student profile or no
 		cout<<"1. Yes"<<endl;
 		cout<<"2. No"<<endl<<endl<<endl<<endl;
 
-		cout<<"*Maximum 100 students' data only"<<endl;
+		cout<<"*Maximum "<<max_student<<" students' data only"<<endl;
 		cin>>choice;
 
 		if(choice=='1') {
@@ -679,10 +681,10 @@ void keyIn_by_SY(int &studentCount,profile student[])
 		}
 
 		else  {
-			cin.clear(); cin.ignore(numeric_limits<int>::max(),'\n'); //discard all the cin input.
+			cin.clear(); cin.ignore(numeric_limits<int>::max(),'\n'); //discard all the cin input due to characters like letters.
 		}
 		studentCount++;
-	} while(checking==true && studentCount<100);
+	} while(checking==true && studentCount<max_student);
 
 	for(int j=0; j<studentCount; j++)
 		display_student_data(student,j);
@@ -691,7 +693,7 @@ void keyIn_by_SY(int &studentCount,profile student[])
 	system("pause");
 }
 
-void update_data(const int studentCount,profile student[])
+void update_data(const int studentCount,profile student[]) //update the data of respective student
 {
 	string studentGpa;
 	string studentCgpa;
@@ -709,21 +711,21 @@ void update_data(const int studentCount,profile student[])
 		cin>>nomatric;
 		if(nomatric=="-1")
 		{return;}
-		if(nomatric.find_first_of("1234567890")!=string::npos && nomatric.length()==6)
+		if(nomatric.find_first_of("1234567890")!=string::npos && nomatric.length()==6) //verify the matric number key in by user is integer and valid or not
 		{
-			get_array_of_no_matric(nomatricarry,studentCount,student);
-			index_number=binarysearch(0,studentCount,nomatricarry,nomatric);
-			if(index_number==-1)
+			get_array_of_no_matric(nomatricarry,studentCount,student);	//make a copy of no matric array.
+			index_number=binarysearch(0,studentCount,nomatricarry,nomatric); //call the binary search to get the index number of the student object array.
+			if(index_number==-1) // if the matric number does not match 1 of the student
 			{
 				cout<<"Student not found in the database."<<endl;
 			}
-			else
+			else // if matric number match 1 of the student
 			{
 				cout<<"Student Found"<<endl;
 				break;
 			}
 		}
-		else
+		else // if the matric number key in by user is invalid
 		{
 			cout<<"Please try again"<<endl;
 		}
@@ -734,7 +736,7 @@ void update_data(const int studentCount,profile student[])
 	do {
 		system("pause");
 		system("cls");
-		display_student_data(student,index_number);
+		display_student_data(student,index_number); // display the student's information
 		cout<<endl;
 		cout<<"To change the student data key in the number in front of each line. For updating courses, please key in 12."<<endl;
 		cout<<"Key in -1 to back to home."<<endl;
@@ -762,11 +764,12 @@ void update_data(const int studentCount,profile student[])
 			cout<<"Gender of the student(male/female): "<<endl;
 			cin>>gender;
 
-			if(gender!="male" && gender != "female") {
+			if(gender!="male" && gender != "female" && gender!="MALE"&& gender!="FEMALE") { //verify gender key in by user if male or female only
 
 				cout<<"Please key in only male or female. The student's data is not recorded in here."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable
 			student[index_number].change(student[index_number].getname(),student[index_number].getmatric(),gender,student[index_number].getaddress(), student[index_number].getemail(),student[index_number].getnophone());
 			break;
 
@@ -781,7 +784,7 @@ void update_data(const int studentCount,profile student[])
 			cout<<"Email of the student: "<<endl;
 			cin>>email;
 
-			if(emailcheck(email)==false) {
+			if(emailcheck(email)==false) { //verify email by checking whether got @ inside or not
 
 				cout<<"Please key in only peoper data. The student's data is not recorded in here."<<endl<<endl<<endl;
 				continue;
@@ -793,11 +796,12 @@ void update_data(const int studentCount,profile student[])
 			cout<<"Phone number of the student: "<<endl;
 			cin>>nophone;
 
-			if(checkfordigit(nophone)==false) {
+			if(checkfordigit(nophone)==false) { //verify phone number
 
 				cout<<"Please key in only peoper data. The student's data is not recorded in here."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable using change() function
 			student[index_number].change(student[index_number].getname(),student[index_number].getmatric(),student[index_number].getgender(),student[index_number].getaddress(), student[index_number].getemail(),nophone);
 
 			break;
@@ -807,11 +811,12 @@ void update_data(const int studentCount,profile student[])
 			cin>>studentGpa;
 
 
-			if(studentGpa.find_first_not_of("1234567890.")!=string::npos || stod(studentGpa)>4.0) {
+			if(studentGpa.find_first_not_of("1234567890.")!=string::npos || stod(studentGpa)>4.0) { //verify gpa key in by user is integer and valid data
 
 				cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable using academics_set() function
 			student[index_number].academics_set(studentGpa,to_string(student[index_number].getCgpa()),student[index_number].getStatus(),to_string(student[index_number].getAccumulatedcredit()),to_string(student[index_number].getMuetband()));
 
 			break;
@@ -820,12 +825,13 @@ void update_data(const int studentCount,profile student[])
 			cout<<"Key in student's cgpa."<<endl;
 			cin>>studentCgpa;
 
-
+//verify cgpa key in by user is integer and valid data
 			if(studentCgpa.find_first_not_of("1234567890.")!=string::npos || stod(studentCgpa)>4.0) {
 
 				cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable using academics_set function
 			student[index_number].academics_set(to_string(student[index_number].getGpa()),studentCgpa,student[index_number].getStatus(),to_string(student[index_number].getAccumulatedcredit()),to_string(student[index_number].getMuetband()));
 
 			break;
@@ -849,6 +855,7 @@ void update_data(const int studentCount,profile student[])
 				cin.clear(); cin.ignore( numeric_limits<int>::max(),'\n'); //discard all the input from cin.
 				continue;
 			}
+			//setting these variable using academics_set function
 			student[index_number].academics_set(to_string(student[index_number].getGpa()),to_string(student[index_number].getCgpa()),studentStatus,to_string(student[index_number].getAccumulatedcredit()),to_string(student[index_number].getMuetband()));
 
 			break;
@@ -857,12 +864,13 @@ void update_data(const int studentCount,profile student[])
 			cout<<"Key in student's accumulated credit."<<endl;
 			cin>>studentAccumulatedcredit;
 
-
-			if(studentAccumulatedcredit.find_first_not_of("1234567890.")!=string::npos) {
+//verify accumulated credit key in by user is integer and valid data
+			if(studentAccumulatedcredit.find_first_not_of("1234567890")!=string::npos) {
 
 				cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable using academics_set function
 			student[index_number].academics_set(to_string(student[index_number].getGpa()),to_string(student[index_number].getCgpa()),student[index_number].getStatus(),studentAccumulatedcredit,to_string(student[index_number].getMuetband()));
 
 			break;
@@ -872,11 +880,12 @@ void update_data(const int studentCount,profile student[])
 			cin>>studentMuetband;
 
 
-			if(studentMuetband.find_first_not_of("1234567890")!=string::npos || stoi(studentMuetband)>6) {
+			if(studentMuetband.find_first_not_of("1234567890")!=string::npos || stoi(studentMuetband)>6) { //verify muet band key in by user is integer and valid data
 
 				cout<<"Please key in only integer and proper data. Key in data again."<<endl<<endl<<endl;
 				continue;
 			}
+			//setting these variable using academics_set function
 			student[index_number].academics_set(to_string(student[index_number].getGpa()),to_string(student[index_number].getCgpa()),student[index_number].getStatus(),to_string(student[index_number].getAccumulatedcredit()),studentMuetband);
 			break;
 
@@ -1095,7 +1104,7 @@ void update_data(const int studentCount,profile student[])
 						cout<<linenumber+1<<". Course Code: ";
 						cin>>course[linenumber];
 					}
-
+					break;
 				case 2:
 					int input;
 					cout<<linenumber+1<<". Course Unit: ";
@@ -1108,7 +1117,7 @@ void update_data(const int studentCount,profile student[])
 						cin>>input;
 					}
 					cu[linenumber]=to_string(input);
-
+					break;
 				case 3:
 					cout<<linenumber+1<<". Grade: ";
 					cin>>grade[linenumber];
@@ -1118,6 +1127,7 @@ void update_data(const int studentCount,profile student[])
 						cout<<linenumber+1<<". Grade: ";
 						cin>>grade[linenumber];
 					}
+					break;
 				default:
 					continue;
 				}
@@ -1133,7 +1143,7 @@ void update_data(const int studentCount,profile student[])
 	system("pause");
 }
 
-
+//read file1
 void readfile1(profile student[],int &studentCount,const int max_student)
 {
 	ifstream readf("file1.txt"); //read file function
@@ -1189,6 +1199,7 @@ void readfile1(profile student[],int &studentCount,const int max_student)
 	}
 }
 
+//read file2
 void readfile2(profile student[],int &studentCount,const int max_student)
 {
 	string studentGpa;
@@ -1209,28 +1220,28 @@ void readfile2(profile student[],int &studentCount,const int max_student)
 		read2.str(line); //set line as the string read by read1
 		read2>>studentMatricnumber>>studentGpa>>studentCgpa>>studentStatus>>studentAccumulatedcredit>>studentMuetband;
 
-		if(studentMatricnumber.find_first_not_of("1234567890")!=string::npos || studentMatricnumber.length()!=6) {
+		if(studentMatricnumber.find_first_not_of("1234567890")!=string::npos || studentMatricnumber.length()!=6) { // verify matric number isit length of 6 and number
 			cout<<"There is an error in matric number section of any one of the students' profile. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
 
-		if(studentGpa.find_first_not_of("1234567890.")!=string::npos || stod(studentGpa)>4) {
+		if(studentGpa.find_first_not_of("1234567890.")!=string::npos || stod(studentGpa)>4) { //verify gpa isit integer and valid
 			cout<<"There is an error in gpa section of any one of the students' profile. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
 
 
-		if(studentCgpa.find_first_not_of("1234567890.")!=string::npos || stod(studentCgpa)>4) {
+		if(studentCgpa.find_first_not_of("1234567890.")!=string::npos || stod(studentCgpa)>4) { //verify cgpa isit integer and valid
 			cout<<"There is an error in cgpa section of any one of the students' profile. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
 
-		if(studentAccumulatedcredit.find_first_not_of("1234567890.")!=string::npos ) {
+		if(studentAccumulatedcredit.find_first_not_of("1234567890.")!=string::npos ) { //verify accumulated credit isit integer and valid
 			cout<<"There is an error in accumulated credit section of any one of the students' profile. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
 
-		if(studentMuetband.find_first_not_of("1234567890.")!=string::npos || stoi(studentMuetband)<1 || stoi(studentMuetband)>6 ) {
+		if(studentMuetband.find_first_not_of("1234567890.")!=string::npos || stoi(studentMuetband)<1 || stoi(studentMuetband)>6 ) { //verify muet band isit integer and valid
 			cout<<"There is an error in muet band section of any one of the students' profile. The student's data is not recorded in here."<<endl<<endl<<endl;
 			continue;
 		}
@@ -1238,8 +1249,8 @@ void readfile2(profile student[],int &studentCount,const int max_student)
 		if(studentMatricnumber==student[i].getmatric())
 		{
 			cout<<student[i].getmatric()<<" ";
-			student[i].academics_set(studentGpa,studentCgpa,studentStatus,studentAccumulatedcredit,studentMuetband);
-			student[i].displayData();
+			student[i].academics_set(studentGpa,studentCgpa,studentStatus,studentAccumulatedcredit,studentMuetband); //set these variable
+			student[i].displayData(); // display
 		}
 
 		else
@@ -1275,6 +1286,7 @@ void readfile2(profile student[],int &studentCount,const int max_student)
 	system("pause");
 }
 
+//read file3
 void readfile3(profile student[],int &studentCount,const int max_student)
 {
 	ifstream readf("file3.txt"); //read file function
@@ -1356,6 +1368,7 @@ void readfile3(profile student[],int &studentCount,const int max_student)
 	}
 }
 
+//filtering by 5 aspect, gpa>2, cgpa>2, status, accumulated credit>60, muet band>4
 void filtering_by_SY(profile student[],int studentCount){
 
 	string choice3;
@@ -1371,7 +1384,7 @@ void filtering_by_SY(profile student[],int studentCount){
 	cout<<"5. Muet band 4 or higher"<<endl;
 	cin>>choice3;
 
-	if(choice3=="1") {
+	if(choice3=="1") { //display data of student with overall gpa>=2
 
 		system("cls");
 
@@ -1384,7 +1397,7 @@ void filtering_by_SY(profile student[],int studentCount){
 
 	}
 
-	else if( choice3=="2") {
+	else if( choice3=="2") { //display data of student with cgpa>=2
 
 		system("cls");
 
@@ -1397,7 +1410,7 @@ void filtering_by_SY(profile student[],int studentCount){
 
 	}
 
-	else if(choice3=="3") {
+	else if(choice3=="3") { //filter by status
 
 		system("cls");
 
@@ -1408,7 +1421,7 @@ void filtering_by_SY(profile student[],int studentCount){
 		cin>>choice4;
 
 
-		if(choice4=="1") {
+		if(choice4=="1") { //display data of student with active status
 
 			system("cls");
 
@@ -1420,7 +1433,7 @@ void filtering_by_SY(profile student[],int studentCount){
 			}
 		}
 
-		else if(choice4=="2") {
+		else if(choice4=="2") { //display data of student with P1 status
 
 			system("cls");
 
@@ -1432,7 +1445,7 @@ void filtering_by_SY(profile student[],int studentCount){
 			}
 		}
 
-		else if(choice4=="3") {
+		else if(choice4=="3") {  //display data of student with P2 status
 
 			system("cls");
 
@@ -1444,7 +1457,7 @@ void filtering_by_SY(profile student[],int studentCount){
 			}
 		}
 
-		else if(choice4=="4") {
+		else if(choice4=="4") {  //display data of student with FO status
 
 			system("cls");
 
@@ -1456,7 +1469,7 @@ void filtering_by_SY(profile student[],int studentCount){
 			}
 		}
 
-		else{
+		else{ //if the user key in wrong dinput, tell user
 			system("cls");
 
 			cout<<"Incorrect input, please try again next time ( key in only 1 / 2 / 3 /4) "<<endl;
@@ -1464,7 +1477,7 @@ void filtering_by_SY(profile student[],int studentCount){
 
 	}
 
-	else if(choice3=="4") {
+	else if(choice3=="4") {  //display data of student with accumulated credit more than or equal 60
 
 		system("cls");
 
@@ -1476,7 +1489,7 @@ void filtering_by_SY(profile student[],int studentCount){
 		}
 	}
 
-	else if(choice3=="5") {
+	else if(choice3=="5") {  //display data of student with muet band higher than band 3
 
 		system("cls");
 
@@ -1489,6 +1502,7 @@ void filtering_by_SY(profile student[],int studentCount){
 	}
 }
 
+//function that generate overall report
 void generate_report(profile student[],int studentCount){
 	int no_menu_1;
 	int no_menu_2;
@@ -1700,34 +1714,39 @@ void filter_by_zr(int studentCount,profile student[])
 
 int main()
 {
-	system("color 02");
-	int j;
+	system("color 02"); //Change command prompt font colour to green.
+	int j;	//for holding menu no for the switch.
 	int studentCount=0; //Keep track of the total number of student read.
 	int max_student=100;    //The maximum number of student can be read.
 	profile *pointer; //dynamic array of object of profile
 	pointer=new profile [max_student];
-	while(true)
+	while(true)	//start of looping. The loop will never stop until reach break.
 	{
-		system("cls");
-		cout<<"Input data by"<<endl;
+
+
+		system("cls");	//Clear the screen content of the command prompt.
+		cout<<"Input data by"<<endl;	//The menu option is print to the screen.
 		cout<<"1. Key in\n";
 		cout<<"2. Files\n";
 		cout<<"3. Update data\n";
 		cout<<"4. Continue\n";
 		cout<<"5. Change maximum number to be processed (Current:)"<<max_student<<endl;
 		cout<<"6. Exit"<<endl;
-		cin>>j;
-		if(j==1) //key in for the student info manually
+			/*cin.clear();
+			cin.ignore();*/
+			cin>>j;	//the no menu choose by the user is stored.
+
+
+		if(j==1)
 		{
-			if(studentCount<max_student)
-				keyIn_by_SY(studentCount,pointer);
+			if(studentCount<max_student) //check the maximum number of student.
+				keyIn_by_SY(studentCount,pointer,max_student);//key in for the student info manually
 			else
 			{
 				cout<<"The database is full!!"<<endl;
 				system("pause");
 			}
 		}
-		//  cout<<student[i].getname()<<" "<<student[i].getmatric()<<" "<<student[i].getgender()<<" "<<student[i].getaddress()<<" "<<student[i].getemail()<<" "<<student[i].getnophone(); // put into the class as a member
 
 		else if(j==2)
 		{
@@ -1759,7 +1778,7 @@ int main()
 				max_student=j;
 				delete []pointer; pointer= new profile[max_student];
 			}
-			if(studentCount>0)
+			else if(studentCount<j)
 			{
 				profile *temperary;
 				temperary =new profile[max_student];
@@ -1774,6 +1793,10 @@ int main()
 					pointer[i]=temperary[i];
 				}
 				delete []temperary;
+			}
+			else
+			{
+				cout<<"Number of Student Stored cannot be smaller than Maximum Student"<<endl;
 			}
 		}
 		else if(j==6)

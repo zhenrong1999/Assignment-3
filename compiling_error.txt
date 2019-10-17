@@ -1,0 +1,19 @@
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp: In member function 'void ad::change(int, std::__cxx11::string*, int*, std::__cxx11::string*, int)':
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp:31:18: error: invalid conversion from 'int' to 'int*' [-fpermissive]
+       nomatric = matric;
+                  ^~~~~~
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp: In function 'int main()':
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp:61:68: error: expected ';' before 'i'
+                 readline(line,course,grade,cu,i,stu,nostu,nomatric)
+                                                                    ^
+                                                                    ;
+                 i++;
+                 ~                                                   
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp: In function 'void readline(std::__cxx11::string, std::__cxx11::string*, std::__cxx11::string*, int*, int&, ad*, int&, int*)':
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp:77:56: error: no matching function for call to 'ad::change(int&, std::__cxx11::string*&, std::__cxx11::string*&, int*&, int&)'
+       stu[nostu].change(nomatric[i-1],course,grade,cu,i);
+                                                        ^
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp:29:10: note: candidate: 'void ad::change(int, std::__cxx11::string*, int*, std::__cxx11::string*, int)'
+     void change (int matric,string Coursein[],int CUin[],string Gradein[],int size)
+          ^~~~~~
+F:\Users\USER\OneDrive - Universiti Sains Malaysia\Programming\A3\ad.cpp:29:10: note:   no known conversion for argument 3 from 'std::__cxx11::string*' {aka 'std::__cxx11::basic_string<char>*'} to 'int*'

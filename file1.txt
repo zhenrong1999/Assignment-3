@@ -1,0 +1,3 @@
+Chow Yun 142112 male 9, USJ cyf@student.usm.my 012xxxxxxx
+Muhammad Asri 142315 male 10, Kota Damansara ma@student.usm.my 012xxxxxxx
+Wan Azlina 142814 female 12, Kota Bharu waz@student.usm.my 012xxxxxxx
