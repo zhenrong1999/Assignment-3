@@ -1,0 +1,64 @@
+Student's Name      : Muhammad Reza Abdullah
+Matric Nunber       : 567611
+| Semester | | Course | |Course Unit| |Grade| |Grade|
+|     1    | | CPT111 | |     3     | | B+  | | 3.33|
+|     1    | | CPT114 | |     4     | | A-  | | 3.67|
+|     1    | | CST131 | |     4     | |  B  | | 3.00|
+|     1    | | LKM400 | |     2     | | B+  | | 3.33|
+|     1    | | LSP300 | |     2     | | A-  | | 3.67|
+|     1    | | SHE101 | |     2     | | B+  | | 3.33|
+
+GPA for Semester 1           : 3.37
+Comment GPA for Semester 1   : Very Good
+CGPA for Semester 1          : 3.37
+Comment CGPA for Semester 1  : Very Good
+
+| Semester | | Course | |Course Unit| |Grade| |Grade|
+|     2    | | CPT112 | |     4     | | D-  | |0.670|
+|     2    | | CPT113 | |     3     | | C+  | | 2.33|
+|     2    | | CPT115 | |     4     | |  D  | | 1.00|
+|     2    | | STU242 | |     4     | | C+  | | 2.33|
+|     2    | | WPD101 | |     2     | |  A  | | 4.00|
+
+GPA for Semester 2           : 1.82
+Comment GPA for Semester 2   : Work Harder
+CGPA for Semester 2          : 2.60
+Comment CGPA for Semester 2  : Work Smart
+
+| Semester | | Course | |Course Unit| |Grade| |Grade|
+|     3    | | CAT200 | |     3     | |  B  | | 3.00|
+|     3    | | CMT221 | |     4     | | B-  | | 2.67|
+|     3    | | CST231 | |     3     | | B-  | | 2.67|
+|     3    | | CST232 | |     3     | | B-  | | 2.67|
+|     3    | | LSP404 | |     2     | |  B  | | 3.00|
+|     3    | | STU231 | |     4     | | B+  | | 3.33|
+
+GPA for Semester 3           : 2.90
+Comment GPA for Semester 3   : Good
+CGPA for Semester 3          : 2.70
+Comment CGPA for Semester 3  : Work Smart
+
+| Semester | | Course | |Course Unit| |Grade| |Grade|
+|     4    | | CMT222 | |     4     | | C+  | | 2.33|
+|     4    | | CPT211 | |     3     | |  C  | | 2.00|
+|     4    | | CPT212 | |     4     | |  C  | | 2.00|
+|     4    | | CST234 | |     3     | | B-  | | 2.67|
+|     4    | | WPD201 | |     2     | |  A  | | 4.00|
+|     4    | | WUS101 | |     2     | | A-  | | 3.67|
+
+GPA for Semester 4           : 2.59
+Comment GPA for Semester 4   : Work Smart
+CGPA for Semester 4          : 2.68
+Comment CGPA for Semester 4  : Work Smart
+
+| Semester | | Course | |Course Unit| |Grade| |Grade|
+|     5    | | CAT300 | |     2     | | A-  | | 3.67|
+|     5    | | CAT301 | |     2     | | B+  | | 3.33|
+|     5    | | AKP201 | |     4     | |  B  | | 3.00|
+|     5    | | HTU223 | |     2     | | B-  | | 2.67|
+
+GPA for Semester 5           : 3.13
+Comment GPA for Semester 5   : Good
+CGPA for Semester 5          : 2.73
+Comment CGPA for Semester 5  : Work Smart
+

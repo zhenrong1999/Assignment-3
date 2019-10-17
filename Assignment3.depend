@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1544319273 source:f:\users\user\onedrive - universiti sains malaysia\programming\assignment3\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cmath>
+	<cctype>
+
